@@ -1,7 +1,4 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
-
-<script src="./js/calculator-basic.js" tyle="javascript"></script>
 
 <polymer-element name="calculator-basic">
     <template>
@@ -11,11 +8,11 @@
         <div class="calc_wrapper">
 
             <div class="calc_title">
-                <div class="calc_title2" >Calculator</div>
-                <div class="calc_close" >&times;</div>
+                <div class="calc_title2">Calculator</div>
+                <div class="calc_close">&times;</div>
             </div>
 
-            <form name="calculator" >
+            <form name="calculator">
 
                 <div>
 
@@ -25,102 +22,121 @@
                     <table>
                         <tr>
                             <td>
-                                <input id="b_MC" type="button" value="MC" class="calc_but calc_op">
+                                <input id="b_MC"  type="button" value="MC" class="calc_but calc_op"
+                                       on-click="{{ mem_clear }}">
                             </td>
                             <td>
-                                <input id="b_MR" type="button" value="MR" class="calc_but calc_op">
+                                <input id="b_MR" type="button" value="MR" class="calc_but calc_op"
+                                       on-click=" {{ mem_recall }}">
                             </td>
                             <td>
-                                <input id="b_M_plus" type="button" value="M+" class="calc_but calc_op">
+                                <input id="b_M_plus" type="button" value="M+" class="calc_but calc_op"
+                                       on-click="{{ mem_add }}">
                             </td>
                             <td>
-                                <input id="b_M_minus" type="button" value="M-" class="calc_but calc_op">
+                                <input id="b_M_minus" type="button" value="M-" class="calc_but calc_op"
+                                       on-click="{{ mem_sub }}">
                             </td>
                             <td>
-                                <input id="b_C" type="button" value="C" class="calc_but calc_op">
+                                <input id="b_C" type="button" value="C" class="calc_but calc_op"
+                                       on-click="{{ C }}">
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input id="b_point" type="button" value="." class="calc_but calc_op" >
+                                <input id="b_point" type="button" value="." class="calc_but calc_op"
+                                       on-click="{{ addDecimalPoint }}">
                             </td>
                             <td>
-                                <input id="b_plus_minus" type="button" value="&plusmn;" class="calc_but calc_op" onclick="plus_minus()">
+                                <input id="b_plus_minus" type="button" value="&plusmn;" class="calc_but calc_op"
+                                       on-click=" {{ plus_minus }}">
                             </td>
                             <td>
-                                <input id="b_pct" type="button" value="&#37;" class="calc_but calc_op" onclick="pct()">
+                                <input id="b_pct" type="button" value="&#37;" class="calc_but calc_op"
+                                       on-click="{{ pct }}">
                             </td>
                             <td>
-                                <input id="b_sqrt" type="button" value="&#x221A;" class="calc_but calc_op" onClick="sqrt()">
+                                <input id="b_sqrt" type="button" value="&#x221A;" class="calc_but calc_op"
+                                       on-click=" {{ sqrt }}">
                             </td>
                             <td>
-                                <input id="b_CE" type="button" value="CE" class="calc_but calc_op">
+                                <input id="b_CE" type="button" value="CE" class="calc_but calc_op"
+                                       on-click="{{ CE }}">
                             </td>
 
                         </tr>
                         <tr>
                             <td class="calc_but calc_lit">
-                                <input type="button" value="1" class="calc_but calc_lit">
+                                <input type="button" value="1" class="calc_but calc_lit" on-click="{{ appendLiteral }}">
                             </td>
                             <td class="calc_but calc_lit">
-                                <input type="button" value="2" class="calc_but calc_lit">
+                                <input type="button" value="2" class="calc_but calc_lit" on-click="{{ appendLiteral }}">
                             </td>
                             <td class="calc_but calc_lit">
-                                <input type="button" value="3" class="calc_but calc_lit">
+                                <input type="button" value="3" class="calc_but calc_lit" on-click="{{ appendLiteral }}">
                             </td>
                             <td>
-                                <input id="b_plus" type="button" value="+" class="calc_but calc_op" onClick="addOperator('+')">
+                                <input id="b_plus" type="button" value="+" class="calc_but calc_op"
+                                       on-click="{{ addOperator }}">
                             </td>
                             <td>
-                                <input id="b_minus" type="button" value="-" class="calc_but calc_op" onClick="addOperator('-')">
+                                <input id="b_minus" type="button" value="-" class="calc_but calc_op"
+                                       on-click="{{ addOperator }}">
                             </td>
                         </tr>
                         <tr>
                             <td class="calc_but calc_lit">
-                                <input type="button" value="4" class="calc_but calc_lit" onClick="appendLiteral('4')">
+                                <input type="button" value="4" class="calc_but calc_lit" on-click="{{ appendLiteral }}">
                             </td>
                             <td class="calc_but calc_lit">
-                                <input type="button" value="5" class="calc_but calc_lit" onClick="appendLiteral('5')">
+                                <input type="button" value="5" class="calc_but calc_lit" on-click="{{ appendLiteral }}">
                             </td>
                             <td class="calc_but calc_lit">
-                                <input type="button" value="6" class="calc_but calc_lit" onClick="appendLiteral('6')">
+                                <input type="button" value="6" class="calc_but calc_lit" on-click="{{ appendLiteral }}">
                             </td>
                             <td>
-                                <input id="b_mult" type="button" value="*" class="calc_but calc_op" onClick="addOperator('*')">
+                                <input id="b_mult" type="button" value="*" class="calc_but calc_op"
+                                       on-click="{{ addOperator }}">
                             </td>
                             <td>
-                                <input id="b_div" type="button" value="/" class="calc_but calc_op" onClick="addOperator('/')">
+                                <input id="b_div" type="button" value="/" class="calc_but calc_op"
+                                       on-click="{{ addOperator }}">
                             </td>
 
                         </tr>
                         <tr>
                             <td class="calc_but calc_lit">
-                                <input type="button" value="7" class="calc_but calc_lit" onClick="appendLiteral('7')">
+                                <input type="button" value="7" class="calc_but calc_lit" on-click="{{ appendLiteral }}">
                             </td>
                             <td class="calc_but calc_lit">
-                                <input type="button" value="8" class="calc_but calc_lit" onClick="appendLiteral('8')">
+                                <input type="button" value="8" class="calc_but calc_lit" on-click="{{ appendLiteral }}">
                             </td>
                             <td class="calc_but calc_lit">
-                                <input type="button" value="9" class="calc_but calc_lit" onClick="appendLiteral('9')">
+                                <input type="button" value="9" class="calc_but calc_lit" on-click="{{ appendLiteral }}">
                             </td>
                             <td>
-                                <input id="b_recip" type="button" value="1/x" class="calc_but calc_op" onClick="recip()">
+                                <input id="b_recip" type="button" value="1/x" class="calc_but calc_op"
+                                       on-click=" {{ recip }}">
                             </td>
                             <td>
-                                <input id="b_pow2" type="button" value="x&sup2;" class="calc_but calc_op" onClick="power2()">
+                                <input id="b_pow2" type="button" value="x&sup2;" class="calc_but calc_op"
+                                       on-click=" {{ power2 }}">
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input type="button" value="0" class="calc_but calc_lit calc_double" onClick="appendLiteral('0')">
+                                <input type="button" value="0" class="calc_but calc_lit calc_double"
+                                       on-click="{{ appendLiteral }}">
                             </td>
 
                             <td colspan="2">
-                                <input id="b_calc" type="button" value="=" class="calc_but calc_op calc_double" onClick="calculateFinal();">
+                                <input id="b_calc" type="button" value="=" class="calc_but calc_op calc_double"
+                                       on-click=" {{ calculateFinal }} ">
                             </td>
 
                             <td>
-                                <input id="b_pow3" type="button" value="x&sup3;" class="calc_but calc_op" onClick="power3()">
+                                <input id="b_pow3" type="button" value="x&sup3;" class="calc_but calc_op"
+                                       on-click=" {{ power3 }}">
                             </td>
                         </tr>
 
@@ -128,27 +144,157 @@
                 </div>
             </form>
         </div>
-
-
     </template>
-    <script>
-        Polymer('calculator-basic', {});
-    </script>
 
-    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script>
+        Polymer('calculator-basic', {
+
+            final_calculation: false,
+            new_ex: false,
+            register: '',
+            memory: '',
+
+            C: function () {
+                this.final_calculation = false;
+                this.setRegister('');
+                this.memory = 0;
+                this.resetAns();
+            },
+
+            resetAns: function () {
+                this.$.ans.value = '';
+                this.$.ans.value.placeholder = '0';
+            },
+
+            addToRegister: function (val) {
+                this.register += val;
+                $(this.$.mhe_register).html(this.register);
+                //$('body /deep/ #mhe_register').html(this.register);
+            },
+
+            setRegister: function (val) {
+                this.register = val;
+                $(this.$.mhe_register).html(this.register);
+                //$('body /deep/ #mhe_register').html(this.register);
+            },
+
+            addOperator: function (event, detail, sender) {
+                var op = sender.value;
+                this.$.ans.value = this.$.ans.value + op;
+                this.addToRegister(this.$.ans.value);
+                this.resetAns();
+                this.new_ex = true;
+                this.final_calculation = false;
+            },
+
+
+            appendLiteral: function (event, detail, sender) {
+                var li = sender.value;
+                this.new_ex = false;
+                if (this.final_calculation) {
+                    this.C();
+                    this.appendLiteral(li);
+                } else {
+                    if (!isNaN(li)) {
+                        this.$.ans.value = eval(this.$.ans.value + li);
+                    } else {
+                        this.$.ans.value += li;
+                    }
+                }
+            },
+
+            mem_clear: function () {
+                console.log('Memory Clear');
+                this.memory = 0;
+                this.new_ex = true;
+            },
+
+            mem_recall: function () {
+                if (this.memory !== '' && this.new_ex) {
+                    this.$.ans.value = this.memory;
+                }
+            },
+
+            mem_add: function () {
+                if (this.$.ans.value !== '') {
+                    if (this.memory === '') this.memory = 0;
+                    this.memory += eval(this.$.ans.value );
+                }
+                this.resetAns();
+                this.new_ex = true;
+            },
+
+            mem_sub: function () {
+                if (this.$.ans.value !== '') {
+                    if (this.memory === '') this.memory = 0;
+                    this.memory -= eval(this.$.ans.value );
+                }
+                this.resetAns();
+                this.new_ex = true;
+            },
+
+            C: function () {
+                this.final_calculation = false;
+                this.setRegister('');
+                this.memory = 0;
+                this.resetAns();
+            },
+
+            CE: function () {
+                this.resetAns();
+            },
+
+            addDecimalPoint: function () {
+                if (this.$.ans.value.indexOf('.') === -1) {
+                    this.appendLiteral('.');
+                }
+            },
+
+            pct: function () {
+                if (this.$.ans.value === '') return;
+                this.$.ans.value = eval(this.$.ans.value) / 100;
+            },
+
+            plus_minus: function () {
+                if (this.$.ans.value === '') return;
+                this.$.ans.value = -1 * eval(this.$.ans.value );
+            },
+
+            recip: function () {
+                if (this.$.ans.value === '') return;
+                this.$.ans.value = 1 / eval(this.$.ans.value );
+            },
+
+            sqrt: function () {
+                if (this.$.ans.value === '') return;
+                this.$.ans.value = Math.sqrt(eval(this.$.ans.value ));
+            },
+
+            power2: function () {
+                if (this.$.ans.value === '') return;
+                this.$.ans.value = Math.pow(eval(this.$.ans.value ), 2);
+            },
+
+            power3: function () {
+                if (this.$.ans.value === '') return;
+                this.$.ans.value = Math.pow(eval(this.$.ans.value ), 3);
+            },
+
+            calculateFinal: function () {
+                if (!this.final_calculation) {
+                    this.addToRegister(this.$.ans.value );
+                    this.$.ans.value = eval(this.register);
+                    this.final_calculation = true;
+                    this.setRegister('');
+                }
+            }
+
+        });
+    </script>
 
 </polymer-element>
 
 <script>
 
-    window.addEventListener('polymer-ready', function(e) {
-        console.log('polymer-ready');
-    });
-
-    window.addEventListener('WebComponentsReady', function(e) {
-        console.log('WebComponentsReady');
-        window.mhe_simple_calc = new simple_calc();
-        window.mhe_simple_calc.init();
-    });
 
 </script>
